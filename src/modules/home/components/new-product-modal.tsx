@@ -146,7 +146,9 @@ export function NewProductModal({ open, onOpenChange }: NewProductModalProps) {
     [onOpenChange, resetForm]
   )
 
-  // Memoized handlers for each field to maintain stable references
+  // Memoized handlers for each field to maintain stable references across renders.
+  // Empty dependency array is intentional: setFormData and setErrors are stable (React guarantees this),
+  // and we use functional updates (prev => ...) so we don't need the current state values.
   const handlers = useMemo(() => {
     const createInputHandler =
       (field: keyof FormData) => (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -168,6 +170,7 @@ export function NewProductModal({ open, onOpenChange }: NewProductModalProps) {
       registeredById: createSelectHandler('registeredById'),
       packaging: createSelectHandler('packaging'),
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (

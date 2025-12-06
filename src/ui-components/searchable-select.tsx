@@ -90,13 +90,15 @@ export function SearchableSelect({
 
   const handleTriggerClick = React.useCallback(() => {
     if (!disabled) {
-      setOpen((prev) => !prev)
-      if (!open) {
-        // Focus the search input when opening
-        setTimeout(() => inputRef.current?.focus(), 0)
-      }
+      setOpen((prev) => {
+        if (!prev) {
+          // Focus the search input when opening
+          setTimeout(() => inputRef.current?.focus(), 0)
+        }
+        return !prev
+      })
     }
-  }, [disabled, open])
+  }, [disabled])
 
   return (
     <div ref={containerRef} className="relative">
