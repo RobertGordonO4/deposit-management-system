@@ -18,7 +18,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '../../../ui-components/select'
-import { useCompanies, useUsers, useCreateProduct } from '../hooks/use-products'
+import { useCompanies, useUsers, useCreateProduct } from '../hooks/useProductForm'
 import type { PackagingType } from '../../../types/api'
 
 interface NewProductModalProps {

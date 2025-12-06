@@ -7,7 +7,7 @@ import { StatCard } from '../../ui-components/stat-card'
 import { RecentProductsTable } from './components/recent-products-table'
 import { QuickActions } from './components/quick-actions'
 import { NewProductModal } from './components/new-product-modal'
-import { useDashboardStats, useRecentProducts } from './hooks/use-dashboard'
+import { useDashboardStats, useRecentProducts } from './hooks/useDashboard'
 
 export function HomePage() {
   const [isModalOpen, setIsModalOpen] = useState(false)

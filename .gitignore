@@ -42,7 +42,4 @@ coverage/
 # OS generated files
 Thumbs.db
 
-# Database (.. Shouldn't this have been here all along? Or do we push the new DB states from local to remote?)
-*.sqlite
-*.sqlite3
-database.sqlite
+# KOMENT: DB -> Shouldn't there have been a rule for .sqlite?
