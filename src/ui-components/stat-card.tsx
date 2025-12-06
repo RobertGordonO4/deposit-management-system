@@ -1,7 +1,7 @@
 import type { LucideIcon } from "lucide-react";
 
-import { Card, CardContent } from "../../components/card";
-import { Skeleton } from "../../components/skeleton";
+import { Card, CardContent } from "./card";
+import { Skeleton } from "./skeleton";
 
 interface StatCardProps {
   title: string;

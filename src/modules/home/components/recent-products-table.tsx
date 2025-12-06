@@ -1,6 +1,6 @@
-import type { Product } from "../../types/api";
-import { Skeleton } from "../../components/skeleton";
-import { Section } from "./section";
+import type { Product } from "../../../types/api";
+import { Skeleton } from "../../../ui-components/skeleton";
+import { Section } from "../../../ui-components/section";
 
 interface RecentProductsProps {
   products: Product[] | undefined;

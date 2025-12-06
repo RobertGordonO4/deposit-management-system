@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { getProducts, getCompanies, getUsers } from "../../lib/api";
+import { getProducts, getCompanies, getUsers } from "../../../lib/api";
 
 /**
  * Hook to fetch recent active products and their total count
@@ -33,14 +33,14 @@ export function useDashboardStats(activeProductsCount: number | undefined) {
 
   // Fetch companies count
   const companiesQuery = useQuery({
-    queryKey: ["companies", "stats"],
+    queryKey: ["companies"],
     queryFn: getCompanies,
     select: (data) => data.total,
   });
 
   // Fetch users count
   const usersQuery = useQuery({
-    queryKey: ["users", "stats"],
+    queryKey: ["users"],
     queryFn: getUsers,
     select: (data) => data.total,
   });

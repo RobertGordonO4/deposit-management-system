@@ -7,7 +7,7 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-} from "../../components/navigation-menu";
+} from "../../ui-components/navigation-menu";
 
 export function TopMenu() {
   const location = useLocation();

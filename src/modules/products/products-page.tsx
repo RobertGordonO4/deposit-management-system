@@ -1,4 +1,4 @@
-import { PageHeader } from "../../components/page-header";
+import { PageHeader } from "../../ui-components/page-header";
 
 export function ProductsPage() {
   return (

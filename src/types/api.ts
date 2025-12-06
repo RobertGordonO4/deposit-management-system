@@ -4,11 +4,22 @@ export interface Product {
   companyId: number;
   registeredById: number;
   name: string;
-  packaging: "pet" | "can" | "glass" | "tetra" | "other";
+  packaging: PackagingType;
   deposit: number;
   volume: number;
   registeredAt: string;
   active: boolean;
+}
+
+export type PackagingType = "pet" | "can" | "glass" | "tetra" | "other";
+
+export interface CreateProductInput {
+  name: string;
+  packaging: PackagingType;
+  deposit: number;
+  volume: number;
+  companyId: number;
+  registeredById: number;
 }
 
 // Company types

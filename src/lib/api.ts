@@ -2,14 +2,16 @@ import type {
   Product,
   Company,
   User,
+  CreateProductInput,
   PaginatedApiResponse,
   ListApiResponse,
+  ApiResponse,
 } from "../types/api";
 
 const API_BASE_URL = "http://localhost:3001";
 
 /**
- * Generic fetch wrapper with error handling
+ * Generic fetch wrapper with error handling for GET requests
  */
 async function apiFetch<T>(endpoint: string): Promise<T> {
   const response = await fetch(`${API_BASE_URL}${endpoint}`);
@@ -20,6 +22,27 @@ async function apiFetch<T>(endpoint: string): Promise<T> {
   }
 
   return response.json();
+}
+
+/**
+ * Generic fetch wrapper for POST requests
+ */
+async function apiPost<T, R>(endpoint: string, data: T): Promise<R> {
+  const response = await fetch(`${API_BASE_URL}${endpoint}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+
+  const responseData = await response.json();
+
+  if (!response.ok) {
+    throw new Error(responseData.error || `API error: ${response.status}`);
+  }
+
+  return responseData;
 }
 
 // Products API
@@ -48,6 +71,13 @@ export async function getProducts(
   const endpoint = `/api/products${queryString ? `?${queryString}` : ""}`;
 
   return apiFetch<PaginatedApiResponse<Product[]>>(endpoint);
+}
+
+// Create product
+export async function createProduct(
+  data: CreateProductInput
+): Promise<ApiResponse<Product>> {
+  return apiPost<CreateProductInput, ApiResponse<Product>>("/api/products", data);
 }
 
 // Companies API

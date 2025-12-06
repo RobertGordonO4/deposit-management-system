@@ -1,10 +1,14 @@
 import { Link } from "react-router";
 import { Plus } from "lucide-react";
 
-import { Button } from "../../components/button";
-import { Section } from "./section";
+import { Button } from "../../../ui-components/button";
+import { Section } from "../../../ui-components/section";
 
-export function QuickActions() {
+interface QuickActionsProps {
+  onAddProduct: () => void;
+}
+
+export function QuickActions({ onAddProduct }: QuickActionsProps) {
   return (
     <Section title="Quick actions">
       <div className="flex flex-row gap-3">
@@ -14,11 +18,9 @@ export function QuickActions() {
             View all products
           </Link>
         </Button>
-        <Button size="sm" asChild>
-          <Link to="/products/new">
-            <Plus className="mr-1.5 h-4 w-4 text-primary-foreground/70" />
-            Add new product
-          </Link>
+        <Button size="sm" onClick={onAddProduct}>
+          <Plus className="mr-1.5 h-4 w-4 text-primary-foreground/70" />
+          Add new product
         </Button>
       </div>
     </Section>
