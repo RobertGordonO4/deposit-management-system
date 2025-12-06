@@ -1,5 +1,5 @@
-import { useQuery } from "@tanstack/react-query";
-import { getProducts, getCompanies, getUsers } from "../../../lib/api";
+import { useQuery } from '@tanstack/react-query'
+import { getProducts, getCompanies, getUsers } from '../../../lib/api'
 
 /**
  * Hook to fetch recent active products and their total count
@@ -7,15 +7,15 @@ import { getProducts, getCompanies, getUsers } from "../../../lib/api";
  */
 export function useRecentProducts(limit: number = 5) {
   return useQuery({
-    queryKey: ["products", "recent", limit],
+    queryKey: ['products', 'recent', limit],
     queryFn: () =>
       getProducts({
         active: true,
         limit,
-        sort: "registeredAt",
-        order: "desc",
+        sort: 'registeredAt',
+        order: 'desc',
       }),
-  });
+  })
 }
 
 /**
@@ -26,35 +26,32 @@ export function useRecentProducts(limit: number = 5) {
 export function useDashboardStats(activeProductsCount: number | undefined) {
   // Fetch pending (inactive) products count - this is the only products call we need for stats
   const pendingProductsQuery = useQuery({
-    queryKey: ["products", "pending", "stats"],
+    queryKey: ['products', 'pending', 'stats'],
     queryFn: () => getProducts({ active: false, limit: 1 }),
     select: (data) => data.pagination.totalItems,
-  });
+  })
 
   // Fetch companies count
   const companiesQuery = useQuery({
-    queryKey: ["companies"],
+    queryKey: ['companies'],
     queryFn: getCompanies,
     select: (data) => data.total,
-  });
+  })
 
   // Fetch users count
   const usersQuery = useQuery({
-    queryKey: ["users"],
+    queryKey: ['users'],
     queryFn: getUsers,
     select: (data) => data.total,
-  });
+  })
 
   const isLoading =
     activeProductsCount === undefined ||
     pendingProductsQuery.isLoading ||
     companiesQuery.isLoading ||
-    usersQuery.isLoading;
+    usersQuery.isLoading
 
-  const isError =
-    pendingProductsQuery.isError ||
-    companiesQuery.isError ||
-    usersQuery.isError;
+  const isError = pendingProductsQuery.isError || companiesQuery.isError || usersQuery.isError
 
   return {
     activeProducts: activeProductsCount ?? 0,
@@ -63,5 +60,5 @@ export function useDashboardStats(activeProductsCount: number | undefined) {
     users: usersQuery.data ?? 0,
     isLoading,
     isError,
-  };
+  }
 }

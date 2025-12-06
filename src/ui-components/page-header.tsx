@@ -1,6 +1,6 @@
 interface PageHeaderProps {
-  title: string;
-  description: string;
+  title: string
+  description: string
 }
 
 export function PageHeader({ title, description }: PageHeaderProps) {
@@ -12,5 +12,5 @@ export function PageHeader({ title, description }: PageHeaderProps) {
 
       <p className="text-muted-foreground text-lg mb-8">{description}</p>
     </header>
-  );
+  )
 }

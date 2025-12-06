@@ -1,8 +1,8 @@
-import { Separator } from "./separator";
+import { Separator } from './separator'
 
 interface SectionProps {
-  title: string;
-  children: React.ReactNode;
+  title: string
+  children: React.ReactNode
 }
 
 export function Section({ title, children }: SectionProps) {
@@ -14,5 +14,5 @@ export function Section({ title, children }: SectionProps) {
       <Separator />
       <div className="px-6 pt-4 pb-6">{children}</div>
     </div>
-  );
+  )
 }

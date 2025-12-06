@@ -1,11 +1,11 @@
-import { Link } from "react-router";
-import { Plus } from "lucide-react";
+import { Link } from 'react-router'
+import { Plus } from 'lucide-react'
 
-import { Button } from "../../../ui-components/button";
-import { Section } from "../../../ui-components/section";
+import { Button } from '../../../ui-components/button'
+import { Section } from '../../../ui-components/section'
 
 interface QuickActionsProps {
-  onAddProduct: () => void;
+  onAddProduct: () => void
 }
 
 export function QuickActions({ onAddProduct }: QuickActionsProps) {
@@ -24,5 +24,5 @@ export function QuickActions({ onAddProduct }: QuickActionsProps) {
         </Button>
       </div>
     </Section>
-  );
+  )
 }

@@ -1,30 +1,22 @@
-import type { LucideIcon } from "lucide-react";
+import type { LucideIcon } from 'lucide-react'
 
-import { Card, CardContent } from "./card";
-import { Skeleton } from "./skeleton";
+import { Card, CardContent } from './card'
+import { Skeleton } from './skeleton'
 
 interface StatCardProps {
-  title: string;
-  subtitle: string;
-  value: number;
-  icon: LucideIcon;
-  isLoading?: boolean;
+  title: string
+  subtitle: string
+  value: number
+  icon: LucideIcon
+  isLoading?: boolean
 }
 
-export function StatCard({
-  title,
-  subtitle,
-  value,
-  icon: Icon,
-  isLoading = false,
-}: StatCardProps) {
+export function StatCard({ title, subtitle, value, icon: Icon, isLoading = false }: StatCardProps) {
   return (
     <Card>
       <CardContent>
         <div className="flex items-start justify-between mb-3">
-          <span className="text-sm font-medium text-foreground">
-            {title}
-          </span>
+          <span className="text-sm font-medium text-foreground">{title}</span>
           <Icon className="h-5 w-5 text-muted-foreground" />
         </div>
         <div className="flex flex-col gap-1">
@@ -41,5 +33,5 @@ export function StatCard({
         </div>
       </CardContent>
     </Card>
-  );
+  )
 }

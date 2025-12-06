@@ -1,16 +1,16 @@
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { getCompanies, getUsers, createProduct } from "../../../lib/api";
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
+import { getCompanies, getUsers, createProduct } from '../../../lib/api'
 
 /**
  * Hook to fetch companies list
  */
 export function useCompanies(enabled = true) {
   return useQuery({
-    queryKey: ["companies"],
+    queryKey: ['companies'],
     queryFn: getCompanies,
     select: (response) => response.data,
     enabled,
-  });
+  })
 }
 
 /**
@@ -18,24 +18,24 @@ export function useCompanies(enabled = true) {
  */
 export function useUsers(enabled = true) {
   return useQuery({
-    queryKey: ["users"],
+    queryKey: ['users'],
     queryFn: getUsers,
     select: (response) => response.data,
     enabled,
-  });
+  })
 }
 
 /**
  * Hook to create a new product
  */
 export function useCreateProduct() {
-  const queryClient = useQueryClient();
+  const queryClient = useQueryClient()
 
   return useMutation({
     mutationFn: createProduct,
     onSuccess: () => {
       // Invalidate products queries to refresh the list
-      queryClient.invalidateQueries({ queryKey: ["products"] });
+      queryClient.invalidateQueries({ queryKey: ['products'] })
     },
-  });
+  })
 }

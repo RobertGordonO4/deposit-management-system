@@ -1,6 +1,6 @@
-import { Outlet } from "react-router";
+import { Outlet } from 'react-router'
 
-import { Header } from "./header";
+import { Header } from './header'
 
 export function Layout() {
   return (
@@ -11,5 +11,5 @@ export function Layout() {
         <Outlet />
       </div>
     </div>
-  );
+  )
 }

@@ -1,13 +1,13 @@
-import "./styles/global.css";
+import './styles/global.css'
 
-import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import { createBrowserRouter, RouterProvider } from 'react-router'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
-import { Layout } from "./modules/navigation/layout";
-import { HomePage } from "./modules/home/home-page";
-import { ProductsPage } from "./modules/products/products-page";
+import { Layout } from './modules/navigation/layout'
+import { HomePage } from './modules/home/home-page'
+import { ProductsPage } from './modules/products/products-page'
 
 // Create a client
 const queryClient = new QueryClient({
@@ -17,26 +17,26 @@ const queryClient = new QueryClient({
       refetchOnWindowFocus: false,
     },
   },
-});
+})
 
 const router = createBrowserRouter([
   {
     Component: Layout,
     children: [
       {
-        path: "/",
+        path: '/',
 
         element: <HomePage />,
       },
       {
-        path: "/products",
+        path: '/products',
         element: <ProductsPage />,
       },
     ],
   },
-]);
+])
 
-const root = document.getElementById("root")!;
+const root = document.getElementById('root')!
 
 createRoot(root).render(
   <StrictMode>
@@ -44,4 +44,4 @@ createRoot(root).render(
       <RouterProvider router={router} />
     </QueryClientProvider>
   </StrictMode>
-);
+)

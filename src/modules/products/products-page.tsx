@@ -1,4 +1,4 @@
-import { PageHeader } from "../../ui-components/page-header";
+import { PageHeader } from '../../ui-components/page-header'
 
 export function ProductsPage() {
   return (
@@ -8,5 +8,5 @@ export function ProductsPage() {
         description="View and manage your registered products."
       />
     </div>
-  );
+  )
 }
