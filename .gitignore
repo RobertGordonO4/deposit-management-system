@@ -41,3 +41,5 @@ coverage/
 
 # OS generated files
 Thumbs.db
+
+# KOMENT: DB -> Shouldn't there have been a rule for .sqlite?

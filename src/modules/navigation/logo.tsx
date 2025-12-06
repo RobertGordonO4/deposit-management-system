@@ -1,4 +1,4 @@
-import { Package } from "lucide-react";
+import { Package } from 'lucide-react'
 
 export function Logo() {
   return (
@@ -6,5 +6,5 @@ export function Logo() {
       <Package className="mr-2 text-blue-500 size-7" />
       DepositManager
     </div>
-  );
+  )
 }
