@@ -1,24 +1,23 @@
-import {
-  Milk,
-  CircleDashed,
-  Building2,
-  Users,
-} from "lucide-react";
+import { useState } from 'react'
+import { Milk, CircleDashed, Building2, Users } from 'lucide-react'
 
-import { PageHeader } from "../../components/page-header";
-import { Alert, AlertDescription, AlertTitle } from "../../components/alert";
-import { StatCard } from "./stat-card";
-import { RecentProductsTable } from "./recent-products-table";
-import { QuickActions } from "./quick-actions";
-import { useDashboardStats, useRecentProducts } from "./use-dashboard";
+import { PageHeader } from '../../ui-components/page-header'
+import { Alert, AlertDescription, AlertTitle } from '../../ui-components/alert'
+import { StatCard } from '../../ui-components/stat-card'
+import { RecentProductsTable } from './components/recent-products-table'
+import { QuickActions } from './components/quick-actions'
+import { NewProductModal } from './components/new-product-modal'
+import { useDashboardStats, useRecentProducts } from './hooks/use-dashboard'
 
 export function HomePage() {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
   // Fetch recent products first - this also gives us the active products count
-  const recentProducts = useRecentProducts(5);
-  const activeProductsCount = recentProducts.data?.pagination.totalItems;
-  
+  const recentProducts = useRecentProducts(5)
+  const activeProductsCount = recentProducts.data?.pagination.totalItems
+
   // Pass the active products count to avoid redundant API call
-  const stats = useDashboardStats(activeProductsCount);
+  const stats = useDashboardStats(activeProductsCount)
 
   return (
     <div>
@@ -71,7 +70,7 @@ export function HomePage() {
 
       {/* Quick actions */}
       <div className="mb-8">
-        <QuickActions />
+        <QuickActions onAddProduct={() => setIsModalOpen(true)} />
       </div>
 
       {/* Recent products */}
@@ -79,6 +78,9 @@ export function HomePage() {
         products={recentProducts.data?.data}
         isLoading={recentProducts.isLoading}
       />
+
+      {/* New Product Modal */}
+      <NewProductModal open={isModalOpen} onOpenChange={setIsModalOpen} />
     </div>
-  );
+  )
 }

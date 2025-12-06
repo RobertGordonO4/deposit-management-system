@@ -1,5 +1,5 @@
-import { Link, useLocation } from "react-router";
-import { House, Milk } from "lucide-react";
+import { Link, useLocation } from 'react-router'
+import { House, Milk } from 'lucide-react'
 
 import {
   NavigationMenu,
@@ -7,17 +7,17 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-} from "../../components/navigation-menu";
+} from '../../ui-components/navigation-menu'
 
 export function TopMenu() {
-  const location = useLocation();
+  const location = useLocation()
 
   return (
     <NavigationMenu className="w-full">
       <NavigationMenuList>
         <NavigationMenuItem>
-          <NavigationMenuTrigger data-state={location.pathname === "/" ? "open" : "closed"}>
-            <NavigationMenuLink asChild data-active={location.pathname === "/"}>
+          <NavigationMenuTrigger data-state={location.pathname === '/' ? 'open' : 'closed'}>
+            <NavigationMenuLink asChild data-active={location.pathname === '/'}>
               <Link to="/" className="flex flex-row items-center">
                 <House className="mr-1" /> Home
               </Link>
@@ -26,8 +26,8 @@ export function TopMenu() {
         </NavigationMenuItem>
 
         <NavigationMenuItem>
-          <NavigationMenuTrigger data-state={location.pathname === "/products" ? "open" : "closed"}>
-            <NavigationMenuLink asChild data-active={location.pathname === "/products"}>
+          <NavigationMenuTrigger data-state={location.pathname === '/products' ? 'open' : 'closed'}>
+            <NavigationMenuLink asChild data-active={location.pathname === '/products'}>
               <Link to="/products" className="flex flex-row items-center">
                 <Milk className="mr-1" /> Products
               </Link>
@@ -36,5 +36,5 @@ export function TopMenu() {
         </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>
-  );
+  )
 }

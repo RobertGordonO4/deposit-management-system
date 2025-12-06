@@ -1,5 +1,5 @@
-import { Logo } from "./logo";
-import { TopMenu } from "./top-menu";
+import { Logo } from './logo'
+import { TopMenu } from './top-menu'
 
 export function Header() {
   return (
@@ -9,5 +9,5 @@ export function Header() {
         <TopMenu />
       </div>
     </div>
-  );
+  )
 }
